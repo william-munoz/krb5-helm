@@ -1,0 +1,18 @@
+# Declare variables to be passed into your templates.
+
+hadoop:
+  image: hadoop
+  tag: latest
+  pullPolicy: IfNotPresent
+
+default_ccache_path: /tmp/ccache
+ccache_filename: krb5kdc_ccache
+krb_client_secret_name: krb5-keytab
+
+sidecar:
+  image: krb_sidecar
+  tag: latest
+  pullPolicy: IfNotPresent
+  configmap: krb-client-krb-client-sidecar-config
+
+hostDataPath: /home/iguazio/pv/mnt/data
