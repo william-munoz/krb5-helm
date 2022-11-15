@@ -5,7 +5,8 @@ FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG}
 
 COPY init_db.sh /init_db
 
-RUN apt-get install -y \
+RUN apt -qq update && \
+	    apt -qq install -y \
         cracklib-runtime \
         libcrack2 \
         expect \
@@ -16,8 +17,8 @@ RUN apt-get install -y \
         krb5-kdc \
         krb5-kdc-ldap \
         libkrb5-3 \
+        libpam-krb5 \
         openjdk-8-jre-headless \
-        pam_krb5 \
         openssh-server \
         openssh-client \
         less \

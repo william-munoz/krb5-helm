@@ -14,7 +14,7 @@ Login Succeeded
 
 ```
 cd docker/server/
-docker build --platform linux/amd64 -t kuberos:0.0.2 .
+docker build --platform linux/amd64 -t kuberos:0.0.3 .
 ```
 
 ## List the Imgage
@@ -28,13 +28,13 @@ kuberos                   0.0.1     a57a1f66945d    About a minute ago    linux/
 ## Tag the Image
 
 ```
-docker tag kuberos:0.0.2 hachikoapp/kuberos:0.0.2
-docker tag kuberos:0.0.2 hachikoapp/kuberos:latest
+docker tag kuberos:0.0.3 hachikoapp/kuberos:0.0.3
+docker tag kuberos:0.0.3 hachikoapp/kuberos:latest
 ```
 
 ## Push the Image
 
 ```
-docker push hachikoapp/kuberos:0.0.2
+docker push hachikoapp/kuberos:0.0.3
 docker push hachikoapp/kuberos:latest
 ```
