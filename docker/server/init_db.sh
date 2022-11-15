@@ -5,7 +5,7 @@ set master_password [lindex $argv 1]
 
 set timeout -1
 
-if {![ file exists /var/lib/krb5kdc/principal]} {
+if {![ file exists /etc/krb5kdc/principal]} {
     set timeout -1
 
     spawn /usr/sbin/kdb5_util -r "${realm}" create -s

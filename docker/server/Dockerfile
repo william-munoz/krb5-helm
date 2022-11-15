@@ -16,6 +16,7 @@ RUN apt -qq update && \
         krb5-admin-server \
         krb5-kdc \
         krb5-kdc-ldap \
+        krb5-config \
         libkrb5-3 \
         libpam-krb5 \
         openjdk-8-jre-headless \
@@ -26,4 +27,7 @@ RUN apt -qq update && \
     && /usr/bin/ssh-keygen -A \
     && useradd iguazio \
     && useradd krbtest \
-    && mkdir /tmp/ccache
+    && mkdir /tmp/ccache \
+    && mkdir /run/sshd \
+    && chmod 755 /run/sshd \
+    && chown root:root /run/sshd

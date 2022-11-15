@@ -14,7 +14,7 @@ Login Succeeded
 
 ```
 cd docker/sidecar/
-docker build --platform linux/amd64 -t krb_sidecar:0.0.2 .
+docker build --platform linux/amd64 -t krb_sidecar:0.0.5 .
 ```
 
 ## List the Imgage
@@ -29,13 +29,13 @@ krb_sidecar               0.0.1     4e9c74c25af6    27 seconds ago    linux/amd6
 ## Tag the Image
 
 ```
-docker tag krb_sidecar:0.0.2 hachikoapp/krb_sidecar:0.0.2
-docker tag krb_sidecar:0.0.2 hachikoapp/krb_sidecar:latest
+docker tag krb_sidecar:0.0.5 hachikoapp/krb_sidecar:0.0.5
+docker tag krb_sidecar:0.0.5 hachikoapp/krb_sidecar:latest
 ```
 
 ## Push the Image
 
 ```
-docker push hachikoapp/krb_sidecar:0.0.2
+docker push hachikoapp/krb_sidecar:0.0.5
 docker push hachikoapp/krb_sidecar:latest
 ```
