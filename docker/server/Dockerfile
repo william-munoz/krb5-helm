@@ -1,28 +1,28 @@
-FROM centos:7.5.1804
+ARG BASE_IMAGE_NAME=debian
+ARG BASE_IMAGE_TAG=stretch-20220125-slim
 
-ARG dict_version=2.9.0-11.el7
-ARG expect_version=5.45-14.el7_1
-ARG krb5_version=1.15.1-19.el7
-
-RUN yum -y --setopt=tsflags=nodocs update \
-    && yum -y --setopt=tsflags=nodocs install \
-        cracklib-dicts-${dict_version} \
-        expect-${expect_version} \
-        krb5-libs \
-        krb5-pkinit \
-        krb5-server \
-        krb5-server-ldap \
-    && yum clean all \
-    && yum -y install \
-        krb5-workstation \
-        pam_krb5 \
-        openssh-server \
-        openssh-clients \
-        less \
-    && yum clean all
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG}
 
 COPY init_db.sh /init_db
-RUN chmod a+x /init_db \
+
+RUN apt-get install -y \
+        cracklib-runtime \
+        libcrack2 \
+        expect \
+        krb5-user \
+        krb5-pkinit \
+        krb5-auth-dialog \
+        krb5-admin-server \
+        krb5-kdc \
+        krb5-kdc-ldap \
+        libkrb5-3 \
+        openjdk-8-jre-headless \
+        pam_krb5 \
+        openssh-server \
+        openssh-client \
+        less \
+    && chmod a+x /init_db \
     && /usr/bin/ssh-keygen -A \
     && useradd iguazio \
-    && useradd krbtest
+    && useradd krbtest \
+    && mkdir /tmp/ccache
